@@ -37,7 +37,7 @@
 - https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlHowDataWritten.html
 - The general process of writing data is:
 	1. Logs data to the commit log
-	1. Writes data to he memtable
+	1. Writes data to the memtable
 	1. Flushes data from the memtable
 	1. Flushed into SSTables
 
@@ -57,3 +57,5 @@
 - Composite Key
 	- One or more columns responsible for data sorting within the partition
 - Clustering Key
+- Flushing
+	- Writing data from memtable into SSTables (disk)
