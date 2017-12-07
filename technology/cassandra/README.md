@@ -47,6 +47,8 @@
 - Don't get deleted, just have rows marked with a "tombstone"
 
 ### Definitions
+- Sharding
+	- A technique of breaking a big database into smaller pieces (called: Shards) and then running each piece on dedicated commodity hardware in a shared nothing architecture
 - Primary Key
 	- Indicates one or more columns used to retrieve data from a table
 	- If more than one column is used (e.g. `PRIMARY KEY(key_part_one, key_part_two)`), the first part of the key (`key_part_one`) is the partition key and the second part of the key (`key_part_two`) is the clustering key
