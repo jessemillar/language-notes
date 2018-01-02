@@ -1,6 +1,7 @@
 ## Gradle
 > Notes taken from [Pluralsight's Gradle Fundamentals course](https://app.pluralsight.com/library/courses/gradle-fundamentals/table-of-contents).
 
+- Gradle is largely used for Java but can be used for projects in any language
 - Gradle files (`build.gradle`) are written in [Groovy](http://groovy-lang.org/)
 	- Groovy is object oriented with `project` being the top-level object
 - Gradle has tasks
