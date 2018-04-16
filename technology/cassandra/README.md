@@ -1,4 +1,5 @@
 ## Cassandra
+- https://stackoverflow.com/a/24953331/3958178
 - Non-relational database (NoSQL)
 	- Mix between key-value store and column database
 - The DataStax company has Cassandra install bundles for community and enterprise and has some decent documentation
@@ -27,6 +28,9 @@
 - When you run an `INSERT`, if that row already exists, it is updated
 - If you want to be able to run a query similar to `SELECT * FROM users WHERE city='Boston'`, `city` must be defined as a primary key or index during table creation
 	- `CREATE TABLE users(id uuid, name varchar, city varchar, PRIMARY KEY (id, city));`
+
+## Resources
+- [This website](https://www.ecyrd.com/cassandracalculator/) seems to be a good way to wrap your head around the effects of different cluster and replication factor configurations
 
 ### CQL
 - Cassandra Query Language
