@@ -33,6 +33,7 @@
 		```
 
 	- "The context is used to allow cancellation of requests, and potentially things like tracing. It's the first argument to all client methods. The Background context is just a basic context without any extra data or timing restrictions."
+- "Admission webhooks are HTTP callbacks that receive admission requests, process them and return admission responses."
 
 # Adding a New API
 
