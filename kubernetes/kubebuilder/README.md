@@ -37,7 +37,6 @@
 		```
 
 	- "The context is used to allow cancellation of requests, and potentially things like tracing. It's the first argument to all client methods. The Background context is just a basic context without any extra data or timing restrictions."
-- "Admission webhooks are HTTP callbacks that receive admission requests, process them and return admission responses."
 - It seems like Kubebuilder automatically updates `main.go` in a number of circumstances
 	- I wonder how often we actually manually modify `main.go`?
 	- Do the automatic updates overwrite manual comments in `main.go`?
@@ -51,7 +50,16 @@
 			1. `Status`
 		- In general, we don't modify the `CronJob` or `CronJobList` structs inside this file -- all modifications go in either Spec or Status
 
-## Implementing Defaulting/Validating Webhooks
+## Webhooks
+
+- "Admission webhooks are HTTP callbacks that receive admission requests, process them and return admission responses."
+- It's best practice to wrap webhooks in an environment variable check so they can be disabled when running locally
+	- "If you want to run the webhooks locally, you’ll have to generate certificates for serving the webhooks, and place them in the right directory (`/tmp/k8s-webhook-server/serving-certs/tls.{crt,key}`, by default)."
+	- "If you’re not running a local API server, you’ll also need to figure out how to proxy traffic from the remote cluster to your local webhook server. For this reason, we generally recommended disabling webhooks when doing your local code-run-test cycle, as we do below."
+- It's [recommended](https://book.kubebuilder.io/cronjob-tutorial/running-webhook.html) to use a [kind](https://book.kubebuilder.io/reference/kind.html) cluster when developing local webhooks
+	- You may need to [deploy a cert manager](https://book.kubebuilder.io/cronjob-tutorial/cert-manager.html) to be fully functional
+
+### Implementing Defaulting/Validating Webhooks
 
 - "We use the `webhook.Defaulter` interface to set defaults to our CRD. A webhook will automatically be served that calls this defaulting. The `Default` method is expected to mutate the receiver, setting the defaults."
 - "The `ValidateCreate`, `ValidateUpdate` and `ValidateDelete` methods are expected to validate that its receiver upon creation, update and deletion respectively."
